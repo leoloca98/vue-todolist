@@ -19,8 +19,28 @@
 <body>
 
     <div id="toDoList">
+        <div class="container mt-100">
+            <!-- *INPUT PER AGGIUNGERE NUOVE TASK -->
+            <!-- <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Recipient's username"
+                    aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+            </div> -->
+            <!-- *ALERT NON CI SONO ALTRE TASK -->
+            <!-- <div class="alert alert-success text-center" role="alert">
+                Non ci sono altre task da svolgere
+            </div> -->
 
+            <!-- *SECTION TASKS -->
+            <ul class="list-group w-75 mx-auto">
+                <li v-for="(task, index) in tasks" class="list-group-item fs-3 p-3 d-flex justify-content-between">
+                    {{ task }}
+                    <button type="button" class="btn-close" aria-label="Close"></button>
+                </li>
+            </ul>
+        </div>
     </div>
+
 
     <script src="./js/script.js"></script>
 </body>
