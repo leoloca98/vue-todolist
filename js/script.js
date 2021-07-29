@@ -4,7 +4,7 @@
 Rifare l'esercizio della to do list come fatto assieme in classe:
  - Stampare in pagina un item per ogni elemento contenuto in un array|
  - Ogni item ha una "x" associata: cliccando su di essa, l'item viene rimosso dalla lista
-| - Predisporre un input per aggiungere un nuovo item alla lista: ciccando su un pulsante, il testo digitato viene aggiunto alla lista.
+ - Predisporre un input per aggiungere un nuovo item alla lista: ciccando su un pulsante, il testo digitato viene aggiunto alla lista.
 
 * BONUS 1: Fare un controllo di validazione per non aggiungere degli item vuoti.
 * BONUS 2: Dedicarsi alla parte grafica aggiungendo un tocco personale e gestendo anche il mobile.
@@ -37,7 +37,7 @@ const toDoList = new Vue({
             }
             this.newTask = "";
         },
-        isShown() {
+        isShown() {                                                 //TODO
             return this.tasks.lenght === 0 ? 'd-none' : '';
         },
     },
