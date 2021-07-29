@@ -27,18 +27,21 @@
                 <button @click="addTask()" class="btn btn-outline-success p-2" type="button">Aggiungi</button>
             </div>
 
+            <!-- *ALERT NON CI SONO ALTRE TASK -->
+            <!--!CHIEDERE PERCHE' FUNZIONA "!tasks.lenght" PER NON MOSTRARE IL MESSAGGIO-->
+            <div v-if="!tasks.length" class="alert alert-success text-center w-25 mx-auto" role="alert">
+                Non ci sono altre task da svolgere
+            </div>
+
             <!-- *SECTION TASKS -->
-            <ul :class="isShown" class="list-group w-75 mx-auto">
+            <ul v-else class="list-group w-75 mx-auto">
                 <li v-for="(task, index) in tasks" class="list-group-item fs-3 p-3 d-flex justify-content-between">
                     {{ task }}
                     <button @click="deleteTask(index)" type="button" class="btn-close" aria-label="Close"></button>
                 </li>
             </ul>
 
-            <!-- *ALERT NON CI SONO ALTRE TASK
-            <div :class="isShown" class="alert alert-success text-center" role="alert">
-                Non ci sono altre task da svolgere
-            </div> -->
+
         </div>
     </div>
 

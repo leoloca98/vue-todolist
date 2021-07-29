@@ -11,16 +11,15 @@ Rifare l'esercizio della to do list come fatto assieme in classe:
 
 */
 
-console.log('Vue is ready', Vue);           //Lo uso solo per controllare se è davvero attivo
+console.log('Vue is ready', Vue);                   //Lo uso solo per controllare se è davvero attivo
 
-Vue.config.devtools = true;                 //Attivare il tool di Vue sull'ispector
+Vue.config.devtools = true;                         //Attivare il tool di Vue sull'ispector
 
 const toDoList = new Vue({
     el: '#toDoList',
     data: {
         newTask: "",
-        currentIndex: null,
-        tasks: [                            //Creo un array delle cose da fare (a cui toglieremo/aggiungeremo altre task)
+        tasks: [                                    //Creo un array delle cose da fare (a cui toglieremo/aggiungeremo altre task)
             'Portare fuori il cane',
             'Andare a far la spesa',
             'Cucinare per i fratelli',
@@ -35,10 +34,7 @@ const toDoList = new Vue({
             if (this.newTask.trim() !== "") {
                 this.tasks.push(this.newTask);
             }
-            this.newTask = "";
-        },
-        isShown() {                                                 //TODO
-            return this.tasks.lenght === 0 ? 'd-none' : '';
+            this.newTask = "";                      //Azzero sempre il campo di scrittura, anche se non si ha messo niente
         },
     },
 });
