@@ -21,23 +21,24 @@
     <div id="toDoList">
         <div class="container mt-100">
             <!-- *INPUT PER AGGIUNGERE NUOVE TASK -->
-            <!-- <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Recipient's username"
-                    aria-label="Recipient's username" aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
-            </div> -->
-            <!-- *ALERT NON CI SONO ALTRE TASK -->
-            <!-- <div class="alert alert-success text-center" role="alert">
-                Non ci sono altre task da svolgere
-            </div> -->
+            <div class="input-group w-75 mx-auto mb-5">
+                <input v-model="newTask" type="text" class="form-control p-2"
+                    placeholder="Aggiungere nuova cosa da fare...">
+                <button @click="addTask()" class="btn btn-outline-success p-2" type="button">Aggiungi</button>
+            </div>
 
             <!-- *SECTION TASKS -->
-            <ul class="list-group w-75 mx-auto">
+            <ul :class="isShown" class="list-group w-75 mx-auto">
                 <li v-for="(task, index) in tasks" class="list-group-item fs-3 p-3 d-flex justify-content-between">
                     {{ task }}
-                    <button type="button" class="btn-close" aria-label="Close"></button>
+                    <button @click="deleteTask(index)" type="button" class="btn-close" aria-label="Close"></button>
                 </li>
             </ul>
+
+            <!-- *ALERT NON CI SONO ALTRE TASK
+            <div :class="isShown" class="alert alert-success text-center" role="alert">
+                Non ci sono altre task da svolgere
+            </div> -->
         </div>
     </div>
 

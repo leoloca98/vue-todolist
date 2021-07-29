@@ -3,7 +3,7 @@
 #DESCRIZIONE
 Rifare l'esercizio della to do list come fatto assieme in classe:
  - Stampare in pagina un item per ogni elemento contenuto in un array|
-| - Ogni item ha una "x" associata: cliccando su di essa, l'item viene rimosso dalla lista
+ - Ogni item ha una "x" associata: cliccando su di essa, l'item viene rimosso dalla lista
 | - Predisporre un input per aggiungere un nuovo item alla lista: ciccando su un pulsante, il testo digitato viene aggiunto alla lista.
 
 * BONUS 1: Fare un controllo di validazione per non aggiungere degli item vuoti.
@@ -18,6 +18,8 @@ Vue.config.devtools = true;                 //Attivare il tool di Vue sull'ispec
 const toDoList = new Vue({
     el: '#toDoList',
     data: {
+        newTask: "",
+        currentIndex: null,
         tasks: [                            //Creo un array delle cose da fare (a cui toglieremo/aggiungeremo altre task)
             'Portare fuori il cane',
             'Andare a far la spesa',
@@ -26,6 +28,17 @@ const toDoList = new Vue({
         ],
     },
     methods: {
-
+        deleteTask(index) {
+            this.tasks.splice(index, 1);
+        },
+        addTask() {
+            if (this.newTask.trim() !== "") {
+                this.tasks.push(this.newTask);
+            }
+            this.newTask = "";
+        },
+        isShown() {
+            return this.tasks.lenght === 0 ? 'd-none' : '';
+        },
     },
 });
