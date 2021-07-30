@@ -19,12 +19,13 @@ Vue.config.devtools = true;                         //Attivare il tool di Vue su
 const toDoList = new Vue({
     el: '#toDoList',
     data: {
-        newTask: "",
+        newTask: '',
+        showInput: true,
         tasks: [                                    //Creo un array delle cose da fare (a cui toglieremo/aggiungeremo altre task)
-            'Portare fuori il cane',
-            'Andare a far la spesa',
-            'Cucinare per i fratelli',
-            'Finire gli esercizi',
+            'Take the dog out',
+            'Go shopping',
+            'Cooking for the brothers',
+            'Finish the exercises',
         ],
     },
     methods: {
@@ -32,10 +33,16 @@ const toDoList = new Vue({
             this.tasks.splice(index, 1);
         },
         addTask() {
-            if (this.newTask.trim() !== "") {
+            if (this.newTask.trim() !== '') {
                 this.tasks.push(this.newTask);
+                this.toggleInput();
+            } else {
+                this.newTask = '';                  //Azzero sempre il campo di scrittura, anche se non si ha messo niente
             }
-            this.newTask = "";                      //Azzero sempre il campo di scrittura, anche se non si ha messo niente
+        },
+        toggleInput() {
+            this.showInput = !this.showInput;
+            this.newTask = '';                      //Azzero sempre il campo di scrittura, anche se non si ha messo niente
         },
     },
 });

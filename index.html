@@ -19,29 +19,57 @@
 <body>
 
     <div id="toDoList">
-        <div class="container mt-100">
-            <!-- *INPUT PER AGGIUNGERE NUOVE TASK -->
+        <div class="container">
+            <!-- Logo Section -->
+            <header class="text-center mx-auto mb-100">
+                <img src="https://www.boolean.careers/images/misc/logo.png" alt="Boolean Careers">
+            </header>
+
+            <!-- Main Section -->
+            <main>
+                <!-- *INPUT PER AGGIUNGERE NUOVE TASK
             <div class="input-group w-75 mx-auto mb-5">
                 <input v-model="newTask" type="text" class="form-control p-2"
-                    placeholder="Aggiungere nuova cosa da fare...">
+                    placeholder="Aggiungere nuova cosa da fare..." @keyup.enter="addTask">
                 <button @click="addTask()" class="btn btn-outline-success py-2 px-4" type="button">Aggiungi</button>
-            </div>
+            </div> -->
 
-            <!-- *ALERT NON CI SONO ALTRE TASK -->
-            <!--!CHIEDERE PERCHE' FUNZIONA "!tasks.lenght" PER NON MOSTRARE IL MESSAGGIO-->
-            <div v-if="!tasks.length" class="alert alert-success text-center w-25 mx-auto" role="alert">
-                Non ci sono altre task da svolgere
-            </div>
+                <!-- *ALERT NON CI SONO ALTRE TASK -->
+                <!--!CHIEDERE PERCHE' FUNZIONA "!tasks.lenght" PER NON MOSTRARE IL MESSAGGIO-->
+                <div v-if="!tasks.length" class="alert alert-success text-center w-25 mx-auto" role="alert">
+                    Non ci sono altre task da svolgere
+                </div>
 
-            <!-- *SECTION TASKS -->
-            <ul v-else class="list-group w-75 mx-auto">
-                <li v-for="(task, index) in tasks" class="list-group-item fs-3 p-3 d-flex justify-content-between">
-                    {{ task }}
-                    <button @click="deleteTask(index)" type="button" class="btn-close" aria-label="Close"></button>
-                </li>
-            </ul>
+                <!-- *SECTION TASKS -->
+                <ul v-else class="list-group w-50 mx-auto">
+                    <li v-for="(task, index) in tasks" class="list-group-item fs-5 p-2 d-flex justify-content-between">
+                        {{ task }}
+                        <button @click="deleteTask(index)" type="button" class="btn-close" aria-label="Close"></button>
+                    </li>
 
+                    <li class="list-group-item">
+                        <!-- *INPUT PER AGGIUNGERE NUOVE TASK -->
+                        <div class="input-group w-100 mx-auto" v-if="!showInput">
+                            <input v-model="newTask" type="text" class="form-control p-2"
+                                placeholder="Aggiungere nuova cosa da fare..." @keyup.enter="addTask">
+                            <!-- Button BACK -->
+                            <button @click="toggleInput" class="btn btn-outline-danger p-2" type="button">
+                                <i class="fas fa-undo px-2"></i>
+                            </button>
+                            <!-- Button ADD -->
+                            <button @click="addTask()" class="btn btn-outline-success p-2" type="button"
+                                @click="addTask()">
+                                <i class="fas fa-plus px-2"></i>
+                            </button>
+                        </div>
+                        <!-- *BUTTON PER AGGIUNGERE -->
+                        <button class="btn btn-success w-100" v-else @click="toggleInput">
+                            <i class="fas fa-plus"><span class="fs-5 mx-2">Aggiungi</span></i>
+                        </button>
 
+                    </li>
+                </ul>
+            </main>
         </div>
     </div>
 

@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
-.mt-100 {
-    margin-top: 150px;
+.mb-100 {
+    margin-bottom: 100px;
+}
+
+img {
+    max-width: 30%;
 }
